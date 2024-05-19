@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -38,6 +40,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
@@ -62,143 +66,159 @@ class LoginFragment : Fragment() {
 
     @Composable
     fun Login() {
-        Column(
-            modifier = Modifier
-                .fillMaxSize().background(
-                    brush = Brush.linearGradient(
-                        colors = listOf(
-                            Color(android.graphics.Color.parseColor("#e1b6cf")),
-                            Color(android.graphics.Color.parseColor("#f0828b")),
-                        )
-                    )
-                ),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+        val backgroundImage: Painter = painterResource(id = R.drawable.bg_signup)
+        val titleImage = painterResource(id = R.drawable.title_signup)
+
+        Box(
+            modifier = Modifier.fillMaxSize()
         ) {
-            var username by remember { mutableStateOf("") }
-            var password by remember { mutableStateOf("") }
-            var carnet by remember { mutableStateOf("") }
-            var email by remember { mutableStateOf("") }
-
-            OutlinedTextField(
-                value = username,
-                onValueChange = { username = it },
-                label = { Text("Nombre de usuario", modifier = Modifier.padding(start = 16.dp)) },
-                shape = RoundedCornerShape(40.dp),
-                modifier = Modifier
-                    .fillMaxWidth(4f / 5f)
-                    .background(Color.White, shape = RoundedCornerShape(40.dp))
-                    .padding(bottom = 4.dp),
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.user),
-                        contentDescription = "Username",
-                        modifier = Modifier.padding(start = 32.dp),
-                        tint = Color(android.graphics.Color.parseColor("#9B0E62"))
-                    )
-                },
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color.Transparent,
-                    unfocusedBorderColor = Color.Transparent,
-                    disabledBorderColor = Color.Transparent
-                )
+            Image(
+                painter = backgroundImage,
+                contentDescription = "Background Image",
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.FillBounds
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
-
-            OutlinedTextField(
-                value = carnet,
-                onValueChange = { carnet = it },
-                label = { Text("Carnet de universidad", modifier = Modifier.padding(start = 16.dp)) },
-                shape = RoundedCornerShape(40.dp),
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth(4f / 5f)
-                    .background(Color.White, shape = RoundedCornerShape(40.dp))
-                    .padding(bottom = 4.dp),
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.user),
-                        contentDescription = "Username",
-                        modifier = Modifier.padding(start = 32.dp),
-                        tint = Color(android.graphics.Color.parseColor("#9B0E62"))
-                    )
-                },
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color.Transparent,
-                    unfocusedBorderColor = Color.Transparent,
-                    disabledBorderColor = Color.Transparent
-                )
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            OutlinedTextField(
-                value = email,
-                onValueChange = { email = it },
-                label = { Text("Correo de universidad", modifier = Modifier.padding(start = 16.dp)) },
-                shape = RoundedCornerShape(40.dp),
-                modifier = Modifier
-                    .fillMaxWidth(4f / 5f)
-                    .background(Color.White, shape = RoundedCornerShape(40.dp))
-                    .padding(bottom = 4.dp),
-                leadingIcon = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.user),
-                        contentDescription = "Username",
-                        modifier = Modifier.padding(start = 32.dp),
-                        tint = Color(android.graphics.Color.parseColor("#9B0E62"))
-                    )
-                },
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color.Transparent,
-                    unfocusedBorderColor = Color.Transparent,
-                    disabledBorderColor = Color.Transparent
-                )
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            OutlinedTextField(
-                value = password,
-                onValueChange = { password = it },
-                label = { Text("Contraseña", modifier = Modifier.padding(start = 16.dp)) },
-                visualTransformation = PasswordVisualTransformation(),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                shape = RoundedCornerShape(40.dp),
-                modifier = Modifier
-                    .fillMaxWidth(4f / 5f)
-                    .background(Color.White, shape = RoundedCornerShape(40.dp))
-                    .padding(bottom = 4.dp),
-                leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Outlined.Lock,
-                        contentDescription = "Password",
-                        modifier = Modifier.padding(start = 32.dp),
-                        tint = Color(android.graphics.Color.parseColor("#9B0E62"))
-                    )
-                },
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Color.Transparent,
-                    unfocusedBorderColor = Color.Transparent,
-                    disabledBorderColor = Color.Transparent
-                )
-            )
-
-            Spacer(modifier = Modifier.height(32.dp))
-
-            Button(
-                onClick = {
-                    findNavController().navigate(R.id.homeFragment) },
-                shape = RoundedCornerShape(40.dp),
-                modifier = Modifier
-                    .fillMaxWidth(4f / 5f)
-                    .height(60.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(android.graphics.Color.parseColor("#9B0E62")))
+                    .fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text("Iniciar sesión")
-                Icon(Icons.Outlined.KeyboardArrowRight, contentDescription = "Enter")
-            }
+                var username by remember { mutableStateOf("") }
+                var password by remember { mutableStateOf("") }
+                var carnet by remember { mutableStateOf("") }
+                var email by remember { mutableStateOf("") }
 
+                Image(
+                    painter = titleImage,
+                    contentDescription = "Unete al cambio y logra tus metas",
+                    modifier = Modifier.fillMaxWidth(4f/5f).height(200.dp),
+                    contentScale = ContentScale.FillBounds
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                OutlinedTextField(
+                    value = username,
+                    onValueChange = { username = it },
+                    label = { Text("Nombre de usuario", modifier = Modifier.padding(start = 16.dp)) },
+                    shape = RoundedCornerShape(40.dp),
+                    modifier = Modifier
+                        .fillMaxWidth(4f / 5f)
+                        .background(Color.White, shape = RoundedCornerShape(40.dp))
+                        .padding(bottom = 4.dp),
+                    leadingIcon = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.user),
+                            contentDescription = "Username",
+                            modifier = Modifier.padding(start = 32.dp),
+                            tint = Color(android.graphics.Color.parseColor("#9B0E62"))
+                        )
+                    },
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = Color.Transparent,
+                        unfocusedBorderColor = Color.Transparent,
+                        disabledBorderColor = Color.Transparent
+                    )
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                OutlinedTextField(
+                    value = carnet,
+                    onValueChange = { carnet = it },
+                    label = { Text("Universidad", modifier = Modifier.padding(start = 16.dp)) },
+                    shape = RoundedCornerShape(40.dp),
+                    modifier = Modifier
+                        .fillMaxWidth(4f / 5f)
+                        .background(Color.White, shape = RoundedCornerShape(40.dp))
+                        .padding(bottom = 4.dp),
+                    leadingIcon = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.icon_university),
+                            contentDescription = "Universidad",
+                            modifier = Modifier.padding(start = 32.dp),
+                            tint = Color(android.graphics.Color.parseColor("#9B0E62"))
+                        )
+                    },
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = Color.Transparent,
+                        unfocusedBorderColor = Color.Transparent,
+                        disabledBorderColor = Color.Transparent
+                    )
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                OutlinedTextField(
+                    value = email,
+                    onValueChange = { email = it },
+                    label = { Text("Número de carnet", modifier = Modifier.padding(start = 16.dp)) },
+                    shape = RoundedCornerShape(40.dp),
+                    modifier = Modifier
+                        .fillMaxWidth(4f / 5f)
+                        .background(Color.White, shape = RoundedCornerShape(40.dp))
+                        .padding(bottom = 4.dp),
+                    leadingIcon = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.icon_carnet),
+                            contentDescription = "Username",
+                            modifier = Modifier.padding(start = 32.dp),
+                            tint = Color(android.graphics.Color.parseColor("#9B0E62"))
+                        )
+                    },
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = Color.Transparent,
+                        unfocusedBorderColor = Color.Transparent,
+                        disabledBorderColor = Color.Transparent
+                    )
+                )
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                OutlinedTextField(
+                    value = password,
+                    onValueChange = { password = it },
+                    label = { Text("Contraseña", modifier = Modifier.padding(start = 16.dp)) },
+                    visualTransformation = PasswordVisualTransformation(),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    shape = RoundedCornerShape(40.dp),
+                    modifier = Modifier
+                        .fillMaxWidth(4f / 5f)
+                        .background(Color.White, shape = RoundedCornerShape(40.dp))
+                        .padding(bottom = 4.dp),
+                    leadingIcon = {
+                        Icon(
+                            imageVector = Icons.Outlined.Lock,
+                            contentDescription = "Password",
+                            modifier = Modifier.padding(start = 32.dp),
+                            tint = Color(android.graphics.Color.parseColor("#9B0E62"))
+                        )
+                    },
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = Color.Transparent,
+                        unfocusedBorderColor = Color.Transparent,
+                        disabledBorderColor = Color.Transparent
+                    )
+                )
+
+                Spacer(modifier = Modifier.height(32.dp))
+
+                Button(
+                    onClick = {
+                        findNavController().navigate(R.id.homeFragment) },
+                    shape = RoundedCornerShape(40.dp),
+                    modifier = Modifier
+                        .fillMaxWidth(4f / 5f)
+                        .height(60.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(android.graphics.Color.parseColor("#9B0E62")))
+                ) {
+                    Text("Iniciar sesión")
+                    Icon(Icons.Outlined.KeyboardArrowRight, contentDescription = "Enter")
+                }
+
+            }
         }
     }
 }
