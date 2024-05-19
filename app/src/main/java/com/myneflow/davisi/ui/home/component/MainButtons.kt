@@ -41,7 +41,7 @@ import com.myneflow.davisi.ui.home.HomeFragment
 import com.myneflow.davisi.ui.nav.AppBarConf
 
 @Composable
-fun MainButtons(fragment: Fragment) {
+fun MainButtons(fragment: Fragment, showBottomSheet: MutableState<Boolean>, ) {
     val navController = findNavController(fragment)
     val backgroundImage = painterResource(id = R.drawable.top_shape)
     Box {
@@ -51,8 +51,9 @@ fun MainButtons(fragment: Fragment) {
                 .align(Alignment.BottomCenter)
         ) {
             Button(
-                onClick = { },
-                elevation = ButtonDefaults.elevatedButtonElevation(16.dp),
+                onClick = { showBottomSheet.value = true
+                          Log.e("MainButtons", "Button 1 clicked") },
+                elevation = ButtonDefaults.elevatedButtonElevation(32.dp),
                 shape = RoundedCornerShape(16.dp),
                 modifier = Modifier.height(80.dp).width(100.dp).padding(end = 8.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Color.White)

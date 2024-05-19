@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.KeyboardArrowRight
 import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.KeyboardArrowRight
 import androidx.compose.material.icons.outlined.Lock
@@ -215,7 +216,7 @@ class LoginFragment : Fragment() {
                     colors = ButtonDefaults.buttonColors(containerColor = Color(android.graphics.Color.parseColor("#9B0E62")))
                 ) {
                     Text("Iniciar sesión")
-                    Icon(Icons.Outlined.KeyboardArrowRight, contentDescription = "Enter")
+                    Icon(Icons.AutoMirrored.Outlined.KeyboardArrowRight, contentDescription = "Enter")
                 }
 
             }
