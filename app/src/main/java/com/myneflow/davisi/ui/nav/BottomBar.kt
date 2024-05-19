@@ -18,9 +18,12 @@ import androidx.navigation.NavController
 import com.myneflow.davisi.R
 
 @Composable
-fun BottomAppBarWithScaffoldM3(actualRoute:String = "Home", navController: NavController) {
+fun AppBarConf(actualRoute:String = "Home", navController: NavController, onIconClick: () -> Unit){
     Scaffold (
         containerColor = Color.Transparent,
+        topBar = {
+            TopBar(onIconClick)
+        },
         bottomBar = {
             BottomAppBar(actualRoute, navController)
         },

@@ -24,7 +24,6 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.myneflow.davisi.R
-import com.myneflow.davisi.ui.nav.BottomAppBarWithScaffoldM3
 
 class PieChartFragment : Fragment() {
 
@@ -49,7 +48,7 @@ class PieChartFragment : Fragment() {
             contentAlignment = Alignment.Center
         ) {
             PieChartView(pieChart)
-            BottomAppBarWithScaffoldM3("Home", navController)
+//            BottomAppBarWithScaffoldM3("Home", navController)
         }
     }
 
