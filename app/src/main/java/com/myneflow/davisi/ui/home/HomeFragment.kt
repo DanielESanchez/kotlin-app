@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
+import com.myneflow.davisi.ui.home.component.MainButtons
 import com.myneflow.davisi.ui.home.component.TopCard
 
 
@@ -22,6 +23,7 @@ class HomeFragment : Fragment() {
             setContent {
                 val isDataVisible = remember { mutableStateOf(true) }
                 TopCard(this@HomeFragment, isDataVisible)
+                MainButtons(fragment = this@HomeFragment)
             }
         }
     }
