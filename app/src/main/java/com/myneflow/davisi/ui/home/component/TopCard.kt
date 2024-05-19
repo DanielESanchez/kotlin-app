@@ -124,8 +124,8 @@ import com.myneflow.davisi.ui.nav.AppBarConf
                     }
                 }
             }
-            AppBarConf("Home", navController, onIconClick = {
-                isDataVisible.value = !isDataVisible.value
-            }, isDataVisible)
+//            AppBarConf("Home", navController, onIconClick = {
+//                isDataVisible.value = !isDataVisible.value
+//            }, isDataVisible)
         }
     }

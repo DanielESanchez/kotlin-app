@@ -19,7 +19,7 @@ import androidx.navigation.NavController
 import com.myneflow.davisi.R
 
 @Composable
-fun AppBarConf(actualRoute:String = "Home", navController: NavController, onIconClick: () -> Unit, isDataVisible: MutableState<Boolean>){
+fun AppBarConf(actualRoute:String = "Home", navController: NavController, onIconClick: () -> Unit, isDataVisible: MutableState<Boolean>,  content: @Composable (PaddingValues) -> Unit){
     Scaffold (
         containerColor = Color.Transparent,
         topBar = {
@@ -29,11 +29,8 @@ fun AppBarConf(actualRoute:String = "Home", navController: NavController, onIcon
             BottomAppBar(actualRoute, navController)
         },
         content = { padding ->
-            LazyColumn(
-                modifier = Modifier.fillMaxSize().padding(padding).background(Color.Transparent),
-                contentPadding = PaddingValues(16.dp)
-            ){
-
+            LazyColumn(modifier = Modifier.fillMaxSize().padding(padding)) {
+                item { content(padding) }
             }
         }
     )
