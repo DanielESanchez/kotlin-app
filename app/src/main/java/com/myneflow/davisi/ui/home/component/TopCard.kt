@@ -139,9 +139,7 @@ import com.myneflow.davisi.ui.nav.TopBar
                 }
             }
             AppBarConf("Home", navController, onIconClick = {
-                Log.e("TopCard", "IconButton clicked in TopCard")
-                Log.e("TopBar", "onIconClick")
                 isDataVisible.value = !isDataVisible.value
-            })
+            }, isDataVisible)
         }
     }

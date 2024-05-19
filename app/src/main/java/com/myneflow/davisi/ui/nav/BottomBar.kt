@@ -10,6 +10,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -18,11 +19,11 @@ import androidx.navigation.NavController
 import com.myneflow.davisi.R
 
 @Composable
-fun AppBarConf(actualRoute:String = "Home", navController: NavController, onIconClick: () -> Unit){
+fun AppBarConf(actualRoute:String = "Home", navController: NavController, onIconClick: () -> Unit, isDataVisible: MutableState<Boolean>){
     Scaffold (
         containerColor = Color.Transparent,
         topBar = {
-            TopBar(onIconClick)
+            TopBar(onIconClick, isDataVisible)
         },
         bottomBar = {
             BottomAppBar(actualRoute, navController)

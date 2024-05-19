@@ -26,6 +26,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.painterResource
@@ -35,7 +36,7 @@ import androidx.compose.ui.unit.sp
 import com.myneflow.davisi.R
 
 @Composable
-fun TopBar(onIconClick: () -> Unit){
+fun TopBar(onIconClick: () -> Unit, isDataVisible: MutableState<Boolean>){
     TransparentTopAppBar(
         title = { Text("¡Hola, Gerardo!", color = Color.White, style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.ExtraBold)) },
         navigationIcon = {
@@ -48,7 +49,10 @@ fun TopBar(onIconClick: () -> Unit){
                 Log.e("TopBar", "onIconClick")
                 onIconClick()
             }) {
-                Icon(painter = painterResource(R.drawable.icon_eye), contentDescription = "Hide data", tint = Color.White)
+                if(isDataVisible.value)
+                    Icon(painter = painterResource(R.drawable.icon_eye), contentDescription = "Hide data", tint = Color.White)
+                else
+                    Icon(painter = painterResource(R.drawable.icon_eye_closed), contentDescription = "Hide data", tint = Color.White)
             }
         }
     )
