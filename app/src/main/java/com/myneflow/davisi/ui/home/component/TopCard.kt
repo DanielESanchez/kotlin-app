@@ -33,15 +33,17 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
-import androidx.navigation.fragment.findNavController
 import com.myneflow.davisi.R
 import com.myneflow.davisi.ui.home.HomeFragment
 import com.myneflow.davisi.ui.nav.BottomAppBarWithScaffoldM3
+import com.myneflow.davisi.ui.nav.TopAppBarWithScaffoldM3
+import com.myneflow.davisi.ui.nav.TopBar
 
-    @Composable
+@Composable
     fun TopCard(fragment: HomeFragment) {
         val navController = findNavController(fragment)
         val backgroundImage = painterResource(id = R.drawable.top_shape)
+        val cardBackground = painterResource(id = R.drawable.card_1)
         val gradient = Brush.linearGradient(
             colors = listOf(
                 Color(0xFF820A02),
@@ -68,15 +70,20 @@ import com.myneflow.davisi.ui.nav.BottomAppBarWithScaffoldM3
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(300.dp)
-                    .padding(top = 80.dp, start = 16.dp, end = 16.dp, bottom = 50.dp),
+                    .padding(top = 100.dp, start = 40.dp, end = 40.dp, bottom = 25.dp),
                 shape = RoundedCornerShape(16.dp),
                 elevation = CardDefaults.elevatedCardElevation(8.dp)
             ) {
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(brush = gradient)
                 ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.card_1),
+                        contentDescription = "Background",
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier.fillMaxSize()
+                    )
                     Column {
                         Row {
                             Text(
@@ -104,7 +111,9 @@ import com.myneflow.davisi.ui.nav.BottomAppBarWithScaffoldM3
                         ) {
                             Text(
                                 text = "$599.72",
-                                modifier = Modifier.padding(16.dp).weight(1f),
+                                modifier = Modifier
+                                    .padding(16.dp)
+                                    .weight(1f),
                                 color = Color.White,
                                 style = TextStyle(fontSize = 20.sp, fontFamily = FontFamily(Font(R.font.poetsen_one_regular)))
                             )
@@ -116,6 +125,7 @@ import com.myneflow.davisi.ui.nav.BottomAppBarWithScaffoldM3
                     }
                 }
             }
+            TopAppBarWithScaffoldM3()
             BottomAppBarWithScaffoldM3("Home", navController)
         }
     }
