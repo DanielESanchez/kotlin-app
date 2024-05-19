@@ -36,7 +36,7 @@ import androidx.compose.ui.unit.sp
 import com.myneflow.davisi.R
 
 @Composable
-fun TopBar(onIconClick: () -> Unit, isDataVisible: MutableState<Boolean>, title:String){
+fun TopBar(onIconClick: () -> Unit, isDataVisible: MutableState<Boolean>, title:String, hideEye:Boolean = false){
     TransparentTopAppBar(
         title = { Text(title, color = Color.White, style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.ExtraBold)) },
         navigationIcon = {
@@ -49,10 +49,20 @@ fun TopBar(onIconClick: () -> Unit, isDataVisible: MutableState<Boolean>, title:
                 Log.e("TopBar", "onIconClick")
                 onIconClick()
             }) {
-                if(isDataVisible.value)
-                    Icon(painter = painterResource(R.drawable.icon_eye), contentDescription = "Hide data", tint = Color.White)
-                else
-                    Icon(painter = painterResource(R.drawable.icon_eye_closed), contentDescription = "Hide data", tint = Color.White)
+                if(!hideEye){
+                    if (isDataVisible.value)
+                        Icon(
+                            painter = painterResource(R.drawable.icon_eye),
+                            contentDescription = "Hide data",
+                            tint = Color.White
+                        )
+                    else
+                        Icon(
+                            painter = painterResource(R.drawable.icon_eye_closed),
+                            contentDescription = "Hide data",
+                            tint = Color.White
+                        )
+                }
             }
         }
     )

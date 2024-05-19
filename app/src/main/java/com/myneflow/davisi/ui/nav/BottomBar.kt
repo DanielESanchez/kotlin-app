@@ -36,12 +36,13 @@ fun AppBarConf(actualRoute:String = "Home",
                scope: CoroutineScope,
                showBottomSheet: MutableState<Boolean>,
                title: String = "¡Hola, Gerardo!",
+               hideEye:Boolean = false,
                content: @Composable (PaddingValues) -> Unit,
 ){
     Scaffold (
         containerColor = Color.Transparent,
         topBar = {
-            TopBar(onIconClick, isDataVisible, title)
+            TopBar(onIconClick, isDataVisible, title, hideEye)
         },
         bottomBar = {
             BottomAppBar(actualRoute, navController)

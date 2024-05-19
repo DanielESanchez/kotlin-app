@@ -56,7 +56,8 @@ class ProjectFragment : Fragment() {
                     sheetState=sheetState,
                     scope = scope,
                     showBottomSheet = showBottomSheet,
-                    title = "Proyectos sociales") { padding ->
+                    title = "Proyectos sociales",
+                    hideEye = true) { padding ->
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
