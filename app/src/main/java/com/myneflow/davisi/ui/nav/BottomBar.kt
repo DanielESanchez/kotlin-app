@@ -55,33 +55,25 @@ fun BottomAppBar(actualRoute:String, navController: NavController) {
                 val isSend = (actualRoute == "Send")
                 val color = "#9B0E62"
                 if(isSend)
-                    Icon(painter = painterResource(id = R.drawable.icon_send), contentDescription = "Send", tint = Color(android.graphics.Color.parseColor(color)))
+                    Icon(painter = painterResource(id = R.drawable.nav_entre_todos), contentDescription = "Send", tint = Color(android.graphics.Color.parseColor(color)))
                 else
-                    Icon(painter = painterResource(id = R.drawable.icon_send), contentDescription = "Send")
-            }
-            IconButton(onClick = { /*TODO*/ }, modifier = Modifier.weight(1f)) {
-                val isLocation = (actualRoute == "Location")
-                val color = "#9B0E62"
-                if(isLocation)
-                    Icon(painter = painterResource(id = R.drawable.icon_location), contentDescription = "Location", tint = Color(android.graphics.Color.parseColor(color)))
-                else
-                    Icon(painter = painterResource(id = R.drawable.icon_location), contentDescription = "Location")
+                    Icon(painter = painterResource(id = R.drawable.nav_entre_todos), contentDescription = "Send")
             }
             IconButton(onClick = { /*TODO*/ }, modifier = Modifier.weight(1f)) {
                 val isCart = (actualRoute == "Cart")
                 val color = "#9B0E62"
                 if(isCart)
-                    Icon(painter = painterResource(id = R.drawable.icon_cart), contentDescription = "Cart", tint = Color(android.graphics.Color.parseColor(color)))
+                    Icon(painter = painterResource(id = R.drawable.nav_comercios), contentDescription = "Cart", tint = Color(android.graphics.Color.parseColor(color)))
                 else
-                    Icon(painter = painterResource(id = R.drawable.icon_cart), contentDescription = "Cart")
+                    Icon(painter = painterResource(id = R.drawable.nav_comercios), contentDescription = "Cart")
             }
             IconButton(onClick = { /*TODO*/ }, modifier = Modifier.weight(1f)) {
                 val isNotification = (actualRoute == "Notification")
                 val color = "#9B0E62"
                 if(isNotification)
-                    Icon(painter = painterResource(id = R.drawable.icon_notification), contentDescription = "Notification", tint = Color(android.graphics.Color.parseColor(color)))
+                    Icon(painter = painterResource(id = R.drawable.nav_recargar), contentDescription = "Notification", tint = Color(android.graphics.Color.parseColor(color)))
                 else
-                    Icon(painter = painterResource(id = R.drawable.icon_notification), contentDescription = "Notification")
+                    Icon(painter = painterResource(id = R.drawable.nav_recargar), contentDescription = "Notification")
             }
         }
     )
