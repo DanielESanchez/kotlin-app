@@ -36,9 +36,9 @@ import androidx.compose.ui.unit.sp
 import com.myneflow.davisi.R
 
 @Composable
-fun TopBar(onIconClick: () -> Unit, isDataVisible: MutableState<Boolean>){
+fun TopBar(onIconClick: () -> Unit, isDataVisible: MutableState<Boolean>, title:String){
     TransparentTopAppBar(
-        title = { Text("¡Hola, Gerardo!", color = Color.White, style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.ExtraBold)) },
+        title = { Text(title, color = Color.White, style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.ExtraBold)) },
         navigationIcon = {
             IconButton(onClick = { Log.e("TopBar", "onIconClick") }) {
                 Icon(Icons.Filled.Menu, contentDescription = "menu", tint = Color.White)

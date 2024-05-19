@@ -25,13 +25,14 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import com.myneflow.davisi.R
 import com.myneflow.davisi.ui.home.HomeFragment
 import com.myneflow.davisi.ui.nav.AppBarConf
 
 @Composable
-    fun TopCard(fragment: HomeFragment, isDataVisible: MutableState<Boolean>) {
+    fun TopCard(fragment: Fragment, isDataVisible: MutableState<Boolean>) {
         val navController = findNavController(fragment)
         val backgroundImage = painterResource(id = R.drawable.top_shape)
 

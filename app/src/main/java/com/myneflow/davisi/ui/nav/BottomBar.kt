@@ -35,12 +35,13 @@ fun AppBarConf(actualRoute:String = "Home",
                sheetState:SheetState,
                scope: CoroutineScope,
                showBottomSheet: MutableState<Boolean>,
+               title: String = "¡Hola, Gerardo!",
                content: @Composable (PaddingValues) -> Unit,
 ){
     Scaffold (
         containerColor = Color.Transparent,
         topBar = {
-            TopBar(onIconClick, isDataVisible)
+            TopBar(onIconClick, isDataVisible, title)
         },
         bottomBar = {
             BottomAppBar(actualRoute, navController)
@@ -62,7 +63,7 @@ fun AppBarConf(actualRoute:String = "Home",
 fun BottomAppBar(actualRoute:String, navController: NavController) {
     BottomAppBar (
         actions = {
-            IconButton(onClick = { navController.navigate(R.id.loginFragment) }, modifier = Modifier.weight(1f)) {
+            IconButton(onClick = { navController.navigate(R.id.homeFragment) }, modifier = Modifier.weight(1f)) {
                 val isHome = (actualRoute == "Home")
                 val color = "#9B0E62"
                 if(isHome)
@@ -70,7 +71,7 @@ fun BottomAppBar(actualRoute:String, navController: NavController) {
                 else
                     Icon(painter = painterResource(id = R.drawable.icon_home), contentDescription = "Home")
             }
-            IconButton(onClick = { navController.navigate(R.id.loadingFragment) }, modifier = Modifier.weight(1f)) {
+            IconButton(onClick = { navController.navigate(R.id.projectFragment) }, modifier = Modifier.weight(1f)) {
                 val isSend = (actualRoute == "Send")
                 val color = "#9B0E62"
                 if(isSend)

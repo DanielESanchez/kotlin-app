@@ -34,6 +34,11 @@
     <fragment
         android:id="@+id/loadingFragment"
         android:name="com.myneflow.davisi.ui.loading.LoadingFragment"
-        tools:layout="@layout/fragment_loading" >
+        tools:layout="@layout/fragment_loading" />
+
+    <fragment
+        android:id="@+id/projectFragment"
+        android:name="com.myneflow.davisi.ui.project.ProjectFragment"
+        tools:layout="@layout/fragment_project" >
     </fragment>
 </navigation>
