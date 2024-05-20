@@ -41,4 +41,9 @@
         android:name="com.myneflow.davisi.ui.project.ProjectFragment"
         tools:layout="@layout/fragment_project" >
     </fragment>
+
+    <fragment
+        android:id="@+id/newProjectFragment"
+        android:name="com.myneflow.davisi.ui.newproject.NewProjectFragment"
+        tools:layout="@layout/fragment_new_project" />
 </navigation>

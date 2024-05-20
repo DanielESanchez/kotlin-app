@@ -22,9 +22,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.myneflow.davisi.R
 
 @Composable
-fun Description() {
+fun Description(navController: NavController) {
     Text(
         text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus nec nisl luctus tincidunt vitae ac nulla. Nulla facilisi. Nulla nec purus nec nisl luctus tincidunt vitae ac nulla. Nulla facilisi.",
         style = TextStyle(
@@ -118,22 +120,31 @@ fun Description() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp).padding(top = 16.dp),
+            .padding(16.dp)
+            .padding(top = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = "Postular mi proyecto",
-            style = TextStyle(
-                color = Color(0xFF9B0E62),
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-            )
-        )
-        HorizontalDivider(
-            modifier = Modifier.width(160.dp),
-            thickness = 1.dp,
-            color = Color(0xFF9B0E62),
-        )
+        Button(onClick = { navController.navigate(R.id.newProjectFragment) }, colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ){
+                Text(
+                    text = "Postular mi proyecto",
+                    style = TextStyle(
+                        color = Color(0xFF9B0E62),
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center
+                    )
+                )
+                HorizontalDivider(
+                    modifier = Modifier.width(160.dp),
+                    thickness = 1.dp,
+                    color = Color(0xFF9B0E62),
+                )
+            }
+        }
     }
 }
