@@ -46,4 +46,9 @@
         android:id="@+id/newProjectFragment"
         android:name="com.myneflow.davisi.ui.newproject.NewProjectFragment"
         tools:layout="@layout/fragment_new_project" />
+
+    <fragment
+        android:id="@+id/payUniversityFragment"
+        android:name="com.myneflow.davisi.ui.payuniversity.PayUniversityFragment"
+        tools:layout="@layout/fragment_pay_university" />
 </navigation>

@@ -72,7 +72,9 @@ fun BottomAppBar(actualRoute:String, navController: NavController) {
                 else
                     Icon(painter = painterResource(id = R.drawable.icon_home), contentDescription = "Home")
             }
-            IconButton(onClick = { navController.navigate(R.id.projectFragment) }, modifier = Modifier.weight(1f)) {
+            IconButton( onClick = { /*navController.navigate(R.id.projectFragment)*/
+                navController.navigate(R.id.payUniversityFragment) },
+                modifier = Modifier.weight(1f)) {
                 val isSend = (actualRoute == "Send")
                 val color = "#9B0E62"
                 if(isSend)
