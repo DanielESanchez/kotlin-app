@@ -101,13 +101,13 @@ fun BottomAppBar(actualRoute:String, navController: NavController) {
                 else
                     Icon(painter = painterResource(id = R.drawable.nav_comercios), contentDescription = "Cart")
             }
-            IconButton(onClick = { /*TODO*/ }, modifier = Modifier.weight(1f)) {
-                val isNotification = (actualRoute == "Notification")
+            IconButton(onClick = { navController.navigate(R.id.RechargeFragment) }, modifier = Modifier.weight(1f)) {
+                val isNotification = (actualRoute == "Recharge")
                 val color = "#9B0E62"
                 if(isNotification)
-                    Icon(painter = painterResource(id = R.drawable.nav_recargar), contentDescription = "Notification", tint = Color(android.graphics.Color.parseColor(color)))
+                    Icon(painter = painterResource(id = R.drawable.nav_recargar), contentDescription = "Recargar", tint = Color(android.graphics.Color.parseColor(color)))
                 else
-                    Icon(painter = painterResource(id = R.drawable.nav_recargar), contentDescription = "Notification")
+                    Icon(painter = painterResource(id = R.drawable.nav_recargar), contentDescription = "Recargar")
             }
         }
     )
