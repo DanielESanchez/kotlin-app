@@ -1,10 +1,14 @@
 package com.myneflow.davisi.ui.home.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -18,6 +22,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.Text
+import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -42,8 +47,8 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ModalTransfer(showBottomSheet: MutableState<Boolean>, sheetState: SheetState, scope: CoroutineScope,) {
-    var amount by remember { mutableStateOf("$444.4") }
+fun ModalEntreTodos(showBottomSheet: MutableState<Boolean>, sheetState: SheetState, scope: CoroutineScope,) {
+    var amount by remember { mutableStateOf("$222.2") }
     var newContact by remember { mutableStateOf("") }
     ModalBottomSheet(
         onDismissRequest = {
@@ -52,34 +57,83 @@ fun ModalTransfer(showBottomSheet: MutableState<Boolean>, sheetState: SheetState
         sheetState = sheetState
     ) {
         // Sheet content
-        Text("ISI Transfer", modifier = Modifier.padding(16.dp).padding(start = 16.dp), style = TextStyle(fontSize = 22.sp, fontWeight = FontWeight.Bold))
-        Text("Monto:", modifier = Modifier.padding(top = 8.dp, start = 30.dp, bottom = 2.dp))
+        Text("Entre todos", modifier = Modifier
+            .padding(16.dp)
+            .padding(start = 16.dp), style = TextStyle(fontSize = 22.sp, fontWeight = FontWeight.Bold))
+        Row (modifier = Modifier.fillMaxWidth().height(100.dp).padding(start = 16.dp, end = 16.dp)) {
+            Column (modifier = Modifier.fillMaxWidth(0.5f).padding(end = 16.dp)) {
+                Text("Monto total:", modifier = Modifier.padding(top = 8.dp, start = 30.dp, bottom = 2.dp))
+                OutlinedTextField(
+                    value = amount,
+                    onValueChange = { amount = it },
+                    shape = RoundedCornerShape(40.dp),
+                    modifier = Modifier
+                        .background(Color.White, shape = RoundedCornerShape(40.dp))
+                        .padding(bottom = 4.dp, start = 8.dp, end = 8.dp)
+                        .align(Alignment.CenterHorizontally),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = Color.Transparent,
+                        unfocusedBorderColor = Color.Transparent,
+                        disabledBorderColor = Color.Transparent
+                    ),
+                    textStyle = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                )
+            }
+            Box(modifier = Modifier.width(1.dp)) {
+                VerticalDivider(color = Color(0xFF9B0E62), thickness = 1.dp, modifier = Modifier.height(100.dp))
+            }
+            Column(modifier = Modifier.fillMaxWidth().padding(start = 16.dp)) {
+                Text("Entre 2:", modifier = Modifier.padding(top = 8.dp, start = 30.dp, bottom = 2.dp))
+                OutlinedTextField(
+                    value = amount,
+                    onValueChange = { amount = it },
+                    shape = RoundedCornerShape(40.dp),
+                    modifier = Modifier
+                        .background(Color.White, shape = RoundedCornerShape(40.dp))
+                        .padding(bottom = 4.dp, start = 8.dp, end = 8.dp)
+                        .align(Alignment.CenterHorizontally),
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = Color.Transparent,
+                        unfocusedBorderColor = Color.Transparent,
+                        disabledBorderColor = Color.Transparent
+                    ),
+                    textStyle = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                )
+            }
+        }
+        Text("Dividir con:", modifier = Modifier.padding(top = 8.dp, start = 30.dp, bottom = 2.dp))
         OutlinedTextField(
-            value = amount,
-            onValueChange = { amount = it },
-            shape = RoundedCornerShape(40.dp),
+            value = "felipe222",
+            onValueChange = { newContact = it },
+            shape = RoundedCornerShape(20.dp),
             modifier = Modifier
                 .fillMaxWidth(5.5f / 7f)
                 .background(Color.White, shape = RoundedCornerShape(40.dp))
-                .padding(bottom = 4.dp, start = 22.dp, end = 22.dp).align(Alignment.CenterHorizontally),
+                .padding(bottom = 4.dp, start = 22.dp, end = 22.dp)
+                .align(Alignment.CenterHorizontally),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = Color.Transparent,
                 unfocusedBorderColor = Color.Transparent,
                 disabledBorderColor = Color.Transparent
             ),
-            textStyle = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+            textStyle = TextStyle(fontSize = 16.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center),
+            readOnly = true
         )
-        Text("Tranferir a:", modifier = Modifier.padding(top = 8.dp, start = 30.dp, bottom = 2.dp))
+
+        Spacer(modifier = Modifier.height(8.dp))
+
         OutlinedTextField(
             value = newContact,
             onValueChange = { newContact = it },
-            shape = RoundedCornerShape(20.dp),
             label = { Text("Nombre de usuario") },
+            shape = RoundedCornerShape(20.dp),
             modifier = Modifier
                 .fillMaxWidth(5.5f / 7f)
                 .background(Color.White, shape = RoundedCornerShape(40.dp))
-                .padding(bottom = 4.dp, start = 22.dp, end = 22.dp).align(Alignment.CenterHorizontally),
+                .padding(bottom = 4.dp, start = 22.dp, end = 22.dp)
+                .align(Alignment.CenterHorizontally),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = Color.Transparent,
                 unfocusedBorderColor = Color.Transparent,
@@ -105,7 +159,8 @@ fun ModalTransfer(showBottomSheet: MutableState<Boolean>, sheetState: SheetState
             modifier = Modifier
                 .fillMaxWidth(5.5f / 7f)
                 .background(Color.White, shape = RoundedCornerShape(40.dp))
-                .padding(bottom = 4.dp, start = 22.dp, end = 22.dp).align(Alignment.CenterHorizontally),
+                .padding(bottom = 4.dp, start = 22.dp, end = 22.dp)
+                .align(Alignment.CenterHorizontally),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = Color.Transparent,
                 unfocusedBorderColor = Color.Transparent,
@@ -122,7 +177,8 @@ fun ModalTransfer(showBottomSheet: MutableState<Boolean>, sheetState: SheetState
             modifier = Modifier
                 .fillMaxWidth(5.5f / 7f)
                 .background(Color.White, shape = RoundedCornerShape(40.dp))
-                .padding(bottom = 4.dp, start = 22.dp, end = 22.dp).align(Alignment.CenterHorizontally),
+                .padding(bottom = 4.dp, start = 22.dp, end = 22.dp)
+                .align(Alignment.CenterHorizontally),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = Color.Transparent,
                 unfocusedBorderColor = Color.Transparent,
@@ -139,7 +195,8 @@ fun ModalTransfer(showBottomSheet: MutableState<Boolean>, sheetState: SheetState
             modifier = Modifier
                 .fillMaxWidth(5.5f / 7f)
                 .background(Color.White, shape = RoundedCornerShape(40.dp))
-                .padding(bottom = 4.dp, start = 22.dp, end = 22.dp).align(Alignment.CenterHorizontally),
+                .padding(bottom = 4.dp, start = 22.dp, end = 22.dp)
+                .align(Alignment.CenterHorizontally),
             colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = Color.Transparent,
                 unfocusedBorderColor = Color.Transparent,
@@ -159,8 +216,8 @@ fun ModalTransfer(showBottomSheet: MutableState<Boolean>, sheetState: SheetState
                 .align(Alignment.CenterHorizontally),
             colors = ButtonDefaults.buttonColors(containerColor = Color(android.graphics.Color.parseColor("#9B0E62")))
         ) {
-            Text("Transferir")
-            Icon(Icons.AutoMirrored.Outlined.KeyboardArrowRight, contentDescription = "Enter")
+            Text("Solicitar", modifier = Modifier.padding(end = 8.dp))
+            Icon( painter = painterResource(id = R.drawable.icon_split_the_bill), contentDescription = "Enter", tint = Color.White)
         }
     }
 }

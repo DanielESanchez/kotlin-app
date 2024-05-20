@@ -3,6 +3,7 @@ package com.myneflow.davisi.ui.home.component
 import android.widget.ProgressBar
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,11 +33,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.myneflow.davisi.R
 
 @Composable
-fun Carousel(cardImages: List<Int>) {
+fun Carousel(cardImages: List<Int>, navController: NavController) {
     val pagerState2 = rememberPagerState(pageCount = { cardImages.size })
     val pagerState = rememberPagerState(pageCount = { cardImages.size })
 
@@ -58,7 +60,8 @@ fun Carousel(cardImages: List<Int>) {
                 modifier = Modifier
                     .height(220.dp)
                     .padding(8.dp)
-                    .background(Color.Transparent),
+                    .background(Color.Transparent)
+                    .clickable(onClick = { navController.navigate(R.id.projectFragment)}),
                 colors = CardDefaults.cardColors(containerColor = Color.Transparent)
             ) {
                 Column(

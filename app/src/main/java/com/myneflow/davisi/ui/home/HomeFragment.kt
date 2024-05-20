@@ -46,25 +46,41 @@ class HomeFragment : Fragment() {
                 val scope = rememberCoroutineScope()
                 val showBottomSheet = remember { mutableStateOf(false) }
 
+                val sheetStateEntreTodos = rememberModalBottomSheetState()
+                val scopeEntreTodos = rememberCoroutineScope()
+                val showBottomSheetEntreTodos = remember { mutableStateOf(false) }
+
                 TopCard(this@HomeFragment, isDataVisible)
                 val cardImages = listOf(
                     R.drawable.bg_signup,
                     R.drawable.card_1,
                     R.drawable.shape,
                 )
-                AppBarConf("Home", navController, onIconClick = {
-                    isDataVisible.value = !isDataVisible.value
-                }, isDataVisible, sheetState=sheetState, scope = scope, showBottomSheet = showBottomSheet) { padding ->
+                AppBarConf("Home", navController,
+                    onIconClick = {
+                        isDataVisible.value = !isDataVisible.value
+                    },
+                    isDataVisible,
+                    sheetState=sheetState,
+                    scope = scope,
+                    showBottomSheet = showBottomSheet,
+                    sheetStateEntreTodos = sheetStateEntreTodos,
+                    scopeEntreTodos = scopeEntreTodos,
+                    showBottomSheetEntreTodos = showBottomSheetEntreTodos,
+                ) { padding ->
                     Column(
                         modifier = Modifier.fillMaxSize().padding(padding)
                             .background(Color.Transparent)
                     ) {
 
                         Spacer(modifier = Modifier.height(16.dp))
-                        Carousel(cardImages)
+                        Carousel(cardImages, navController)
                     }
                 }
-                MainButtons(fragment = this@HomeFragment, showBottomSheet = showBottomSheet)
+                MainButtons( fragment = this@HomeFragment,
+                    showBottomSheet = showBottomSheet,
+                    showBottomSheetEntreTodos = showBottomSheetEntreTodos
+                )
             }
         }
 

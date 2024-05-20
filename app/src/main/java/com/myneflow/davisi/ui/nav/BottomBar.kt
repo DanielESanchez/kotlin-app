@@ -14,14 +14,19 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.myneflow.davisi.R
+import com.myneflow.davisi.ui.home.component.ModalEntreTodos
 import com.myneflow.davisi.ui.home.component.ModalTransfer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -37,6 +42,9 @@ fun AppBarConf(actualRoute:String = "Home",
                showBottomSheet: MutableState<Boolean>,
                title: String = "¡Hola, Gerardo!",
                hideEye:Boolean = false,
+               sheetStateEntreTodos:SheetState = rememberModalBottomSheetState(),
+               scopeEntreTodos:CoroutineScope = rememberCoroutineScope(),
+               showBottomSheetEntreTodos:MutableState<Boolean> = remember { mutableStateOf(false)},
                content: @Composable (PaddingValues) -> Unit,
 ){
     Scaffold (
@@ -55,6 +63,9 @@ fun AppBarConf(actualRoute:String = "Home",
             }
             if (showBottomSheet.value) {
                 ModalTransfer(showBottomSheet = showBottomSheet, sheetState = sheetState, scope = scope)
+            }
+            if(showBottomSheetEntreTodos.value){
+                ModalEntreTodos(showBottomSheet = showBottomSheetEntreTodos, sheetState = sheetStateEntreTodos, scope = scopeEntreTodos)
             }
         }
     )
