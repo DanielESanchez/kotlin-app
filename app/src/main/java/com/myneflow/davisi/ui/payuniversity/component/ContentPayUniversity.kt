@@ -1,8 +1,5 @@
 package com.myneflow.davisi.ui.payuniversity.component
 
-import android.net.Uri
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,7 +11,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.KeyboardArrowRight
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -40,10 +36,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.myneflow.davisi.R
 
 @Composable
-fun ContentPayUniversity() {
+fun ContentPayUniversity(navController: NavController) {
     var projectName by remember { mutableStateOf("") }
 
     Column(
@@ -105,10 +102,10 @@ fun ContentPayUniversity() {
         horizontalAlignment = Alignment.CenterHorizontally
     ){
         Button(
-            onClick = { },
+            onClick = { navController.navigate(R.id.payUniversityHistoryFragment) },
             shape = RoundedCornerShape(40.dp),
             modifier = Modifier
-                .fillMaxWidth(4f / 5f)
+                .fillMaxWidth(3f / 5f)
                 .height(60.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF9B0E62))
         ) {
@@ -130,7 +127,7 @@ fun ContentPayUniversity() {
                 modifier = Modifier.padding(16.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                IconButton(onClick = { /*TODO*/ }) {
+                IconButton(onClick = {  }) {
                     Icon(Icons.Default.KeyboardArrowDown, contentDescription = "")
                 }
             }

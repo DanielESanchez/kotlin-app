@@ -51,4 +51,9 @@
         android:id="@+id/payUniversityFragment"
         android:name="com.myneflow.davisi.ui.payuniversity.PayUniversityFragment"
         tools:layout="@layout/fragment_pay_university" />
+
+    <fragment
+        android:id="@+id/payUniversityHistoryFragment"
+        android:name="com.myneflow.davisi.ui.payuniversity.PayUniversityHistoryFragment"
+        tools:layout="@layout/fragment_pay_university_history" />
 </navigation>

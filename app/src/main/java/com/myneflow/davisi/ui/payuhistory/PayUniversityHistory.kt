@@ -20,10 +20,11 @@ import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import com.myneflow.davisi.ui.nav.AppBarConf
+import com.myneflow.davisi.ui.payuhistory.component.ContentPayUniversityHistory
 import com.myneflow.davisi.ui.payuniversity.component.ContentPayUniversity
 import com.myneflow.davisi.ui.project.component.TopCardProject
 
-class PayUniversityFragment : Fragment() {
+class PayUniversityHistoryFragment : Fragment() {
 
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreateView(
@@ -39,7 +40,7 @@ class PayUniversityFragment : Fragment() {
                 val scope = rememberCoroutineScope()
                 val showBottomSheet = remember { mutableStateOf(false) }
 
-                TopCardProject(this@PayUniversityFragment, isDataVisible)
+                TopCardProject(this@PayUniversityHistoryFragment, isDataVisible)
                 AppBarConf("Send", navController, onIconClick = {
                     isDataVisible.value = !isDataVisible.value
                 }, isDataVisible,
@@ -54,7 +55,7 @@ class PayUniversityFragment : Fragment() {
                             .padding(top = 40.dp)
                             .background(Color.Transparent)
                     ) {
-                        ContentPayUniversity(navController = navController)
+                        ContentPayUniversityHistory(navController)
                     }
                 }
             }
